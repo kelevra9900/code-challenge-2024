@@ -1,11 +1,12 @@
-import pick from 'lodash/pick';
+import {Controller} from "react-hook-form";
 
-import {User} from "@/types";
 import {Form} from "@/components/ui/forms/form";
 import Card from '@/components/ui/cards/card';
-import Input from '../ui/forms/input';
-import Button from '../ui/button';
-import FileInput from '../ui/forms/file-input';
+import Input from '@/components/ui/forms/input';
+import Button from '@/components/ui/button';
+import FileInput from '@/components/ui/forms/file-input';
+import Select from "@/components/ui/select/select";
+import Label from "@/components/ui/forms/label";
 
 const ContentForm = () => {
 	function onSubmit(data: any) {
@@ -40,14 +41,35 @@ const ContentForm = () => {
 									variant='outline'
 								/>
 							</div>
-							<div className="mb-6 flex flex-row">
-								<Input
-									className="flex-1"
-									label="Tipo"
-									{...register('type')}
-									variant='outline'
-								/>
-							</div>
+							<Controller
+								name="refund_reason"
+								control={control}
+								render={({field}) => (
+									<>
+										<div className="mb-5">
+											<Label htmlFor="images">
+												Selecciona un tipo de contenido
+											</Label>
+											<Select
+												{...field}
+												options={[]}
+												isDisabled={false}
+												isLoading={false}
+												isSearchable={false}
+												placeholder={'Selecciona un tipo de contenido'}
+												className="basic-multi-select"
+												classNamePrefix="select"
+												isMulti={false}
+											/>
+											{/* {errors.refund_reason && (
+												<p className="mt-2 text-xs text-red-500">
+													{t(errors.refund_reason?.message!)}
+												</p>
+											)} */}
+										</div>
+									</>
+								)}
+							/>
 							<div className="mb-6 flex flex-row">
 								<Input
 									className="flex-1"
@@ -64,14 +86,35 @@ const ContentForm = () => {
 									variant='outline'
 								/>
 							</div>
-							<div className="mb-6 flex flex-row">
-								<Input
-									className="flex-1"
-									label="Categoría"
-									{...register('category')}
-									variant='outline'
-								/>
-							</div>
+							<Controller
+								name="category"
+								control={control}
+								render={({field}) => (
+									<>
+										<div className="mb-5">
+											<Label htmlFor="images">
+												Selecciona una categoría
+											</Label>
+											<Select
+												{...field}
+												options={[]}
+												isDisabled={false}
+												isLoading={false}
+												isSearchable={false}
+												placeholder={'Selecciona una categoría'}
+												className="basic-multi-select"
+												classNamePrefix="select"
+												isMulti={false}
+											/>
+											{/* {errors.refund_reason && (
+												<p className="mt-2 text-xs text-red-500">
+													{t(errors.refund_reason?.message!)}
+												</p>
+											)} */}
+										</div>
+									</>
+								)}
+							/>
 
 							<div className="flex">
 								<Button

@@ -9,6 +9,18 @@
 
 Welcome to this code challenge! This repository contains a test project for a MERN stack application. The project is built with TypeScript, Express, and MongoDB, and is designed to showcase a full-stack application with a RESTful API.
 
+## Screenshots
+
+| Home | Home 2 | Home 3 | Home 4 |
+|-----------|----------------|----------------|----------------|
+| ![Preview](https://firebasestorage.googleapis.com/v0/b/portafolio-rt.appspot.com/o/previews%2Fimage-1.png?alt=media&token=22652e74-0586-47bd-acce-c871717546c7) | ![HOME 2](https://firebasestorage.googleapis.com/v0/b/portafolio-rt.appspot.com/o/previews%2Fimage-2.png?alt=media&token=92d9c3d3-9d10-4421-a783-409f55b0169e)| ![Home 4](https://firebasestorage.googleapis.com/v0/b/portafolio-rt.appspot.com/o/previews%2Fimage-3.png?alt=media&token=8acf505b-ef05-4c6d-bd3e-9c880f3b6cee)| ![Onboarding](https://firebasestorage.googleapis.com/v0/b/portafolio-rt.appspot.com/o/previews%2Fimage-4.png?alt=media&token=e5fcb2a0-7646-420b-a2ab-54f3591ff59b) |
+
+
+| Auth 5 | Dashboard 6 | API 7 | API 8 |
+|-----------|----------------|----------------|----------------|
+| ![Preview](https://firebasestorage.googleapis.com/v0/b/portafolio-rt.appspot.com/o/previews%2Fimage-5.png?alt=media&token=98337b02-5598-402c-a2ad-458d0b5be866) | ![HOME 2](https://firebasestorage.googleapis.com/v0/b/portafolio-rt.appspot.com/o/previews%2Fimage-6.png?alt=media&token=79397684-7ec9-483a-8a14-92760e994d76)| ![Home 4](https://firebasestorage.googleapis.com/v0/b/portafolio-rt.appspot.com/o/previews%2Fimage-7.png?alt=media&token=548a2b45-8366-411e-b0d2-4ec68b275e5d)| ![Onboarding](https://firebasestorage.googleapis.com/v0/b/portafolio-rt.appspot.com/o/previews%2Fimage-8.png?alt=media&token=89dfeeb7-2e3f-4f11-ac56-da57036945bf) |
+
+
 ## 🚀 Features
 
 - 📁 Modular Structure: Organized by feature for easy navigation and scalability.
