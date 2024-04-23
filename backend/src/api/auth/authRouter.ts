@@ -105,7 +105,6 @@ export const authRouter: Router = (() => {
   });
 
   router.get('/me', async (req: Request, res: Response) => {
-    console.log(req.headers.authorization || req.headers.authorization?.split(' ').length === 1);
     if (!req.headers.authorization || req.headers.authorization?.split(' ').length === 1) {
       return res
         .send({

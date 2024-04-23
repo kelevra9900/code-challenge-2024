@@ -1,12 +1,17 @@
+import CreateFormCategory from "@/components/categories/form-category";
 import Seo from "@/components/seo/seo"
+import Card from "@/components/ui/cards/card";
 import DashboardLayout from "@/layouts/_dashboard";
 
 const CategoriesPage = () => {
-	return(
+	return (
 		<>
 			<Seo noindex={true} nofollow={true} title="Categorias" />
 			<div className="w-full overflow-hidden px-1 pb-1">
 				<div className="mb-8 mt-10">
+					<Card>
+						<CreateFormCategory />
+					</Card>
 				</div>
 			</div>
 		</>

@@ -18,6 +18,12 @@ export interface SearchParamOptions {
 	category: string;
 }
 
+export interface CreateCategoryInput {
+	name: string;
+	slug: string;
+	icon?: string;
+	image?: string;
+}
 export interface UserResponse extends ResponseData {
 	responseObject: User;
 }
