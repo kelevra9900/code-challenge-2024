@@ -20,10 +20,10 @@ export const useCreateCategoryMutation = () => {
 	});
 }
 
-export const useCategoryQuery = ({slug}: GetParams) => {
+export const useCategoryQuery = ({id}: GetParams) => {
 	const {data,error,isLoading} = useQuery<Category,Error>(
-		[API_ENDPOINTS.CATEGORIES,{slug}],
-		() => categoryClient.get({slug})
+		[API_ENDPOINTS.CATEGORIES,{id}],
+		() => categoryClient.get({id})
 	);
 
 	return {
