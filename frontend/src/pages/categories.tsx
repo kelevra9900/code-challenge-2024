@@ -8,8 +8,8 @@ const CategoriesPage = () => {
 		<>
 			<Seo noindex={true} nofollow={true} title="Categorias" />
 			<div className="w-full overflow-hidden px-1 pb-1">
-				<div className="mb-8 mt-10">
-					<Card>
+				<div className="mb-8">
+					<Card className="w-full mt-10">
 						<CreateFormCategory />
 					</Card>
 				</div>

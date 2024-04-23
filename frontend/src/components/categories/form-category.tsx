@@ -3,6 +3,7 @@ import {CreateCategoryInput} from '@/types/index';
 import {Form} from '@/components/ui/forms/form';
 import Input from '@/components/ui/forms/input';
 import Button from '@/components/ui/button';
+import FileInput from '../ui/forms/file-input';
 
 
 export const createCategorySchema = yup.object().shape({
@@ -12,6 +13,7 @@ export const createCategorySchema = yup.object().shape({
 	image: yup.string(),
 });
 export default function CreateFormCategory() {
+
 	function handleSubmit(values: CreateCategoryInput) {
 		console.log(values);
 	}
@@ -20,8 +22,13 @@ export default function CreateFormCategory() {
 			onSubmit={handleSubmit}
 			className="flex flex-col"
 			validationSchema={createCategorySchema}>
-			{({register,formState}) => (
+			{({register,formState, control}) => (
 				<>
+					<div className="mb-8">
+						<label className="mb-3 block text-sm font-semibold leading-none text-body-dark2">Portada</label>
+						<FileInput control={control} name="imagen" />
+					</div>
+
 					<Input
 						label="Nombre"
 						{...register('name')}
@@ -40,14 +47,6 @@ export default function CreateFormCategory() {
 						label="Icono"
 						{...register('icon')}
 						error={formState.errors['icon']?.message}
-						className="mb-5"
-					/>
-
-
-					<Input
-						label="Imagen"
-						{...register('image')}
-						error={formState.errors['image']?.message}
 						className="mb-5"
 					/>
 

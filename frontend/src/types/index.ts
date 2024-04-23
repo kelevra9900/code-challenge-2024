@@ -18,6 +18,11 @@ export interface SearchParamOptions {
 	category: string;
 }
 
+export interface ChangePasswordUserInput {
+	oldPassword: string;
+	newPassword: string;
+}
+
 export interface CreateCategoryInput {
 	name: string;
 	slug: string;

@@ -5,6 +5,7 @@ import {Form} from "@/components/ui/forms/form";
 import Card from '@/components/ui/cards/card';
 import Input from '../ui/forms/input';
 import Button from '../ui/button';
+import FileInput from '../ui/forms/file-input';
 
 const ProfileForm = ({user}: { user: User }) => {
 	function onSubmit(data: UpdateUserInput) {
@@ -25,7 +26,7 @@ const ProfileForm = ({user}: { user: User }) => {
 					<div className='mb-8 flex'>
 						<Card className="w-full">
 							<div className="mb-8">
-								{/* File input upload here */}
+								<FileInput control={control} name="avatar" />
 							</div>
 
 							<div className="mb-6 flex flex-row">

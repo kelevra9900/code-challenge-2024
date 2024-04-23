@@ -1,4 +1,5 @@
 import Seo from "@/components/seo/seo";
+import ThemeForm from "@/components/themes/theme-form";
 import DashboardLayout from "@/layouts/_dashboard";
 
 const ThemesPage = () => {
@@ -7,7 +8,7 @@ const ThemesPage = () => {
 			<Seo noindex={true} nofollow={true} title="Temas" />
 			<div className="w-full overflow-hidden px-1 pb-1">
 				<div className="mb-8 mt-10">
-
+					<ThemeForm />
 				</div>
 			</div>
 		</>
