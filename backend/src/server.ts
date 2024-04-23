@@ -4,17 +4,18 @@ import fileUpload from 'express-fileupload';
 import helmet from 'helmet';
 import { pino } from 'pino';
 
+import { authRouter } from '@/api/auth/authRouter';
 import { categoryRouter } from '@/api/category/categoryRouter';
+import { contentRouter } from '@/api/content/contentRouter';
 import { healthCheckRouter } from '@/api/healthCheck/healthCheckRouter';
+import { themeRouter } from '@/api/theme/themeRouter';
+import { uploadRouter } from '@/api/upload/uploadRouter';
 import { userRouter } from '@/api/user/userRouter';
 import { openAPIRouter } from '@/api-docs/openAPIRouter';
 import errorHandler from '@/common/middleware/errorHandler';
 import rateLimiter from '@/common/middleware/rateLimiter';
 import requestLogger from '@/common/middleware/requestLogger';
 
-import { authRouter } from './api/auth/authRouter';
-import { contentRouter } from './api/content/contentRouter';
-import { themeRouter } from './api/theme/themeRouter';
 // connectDB
 import { connectDB } from './config/db';
 
@@ -44,6 +45,8 @@ app.use('/auth', authRouter);
 app.use('/categories', categoryRouter);
 app.use('/themes', themeRouter);
 app.use('/contents', contentRouter);
+app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use('/upload', uploadRouter);
 
 // Swagger UI
 app.use(openAPIRouter);

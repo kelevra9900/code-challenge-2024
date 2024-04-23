@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { toast } from 'react-toastify';
 
 import Logo from '@/components/ui/logo';
 import Alert from '@/components/ui/alert';
@@ -44,7 +45,15 @@ function LoginForm() {
 						closeModal();
 					}
 				},
-				onError: () => { },
+				onError: () => { 
+					toast.error('Error al iniciar sesión, por favor intenta de nuevo', {
+						position: 'top-right',
+						autoClose: 5000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+					});
+				},
 			}
 		);
 	}
