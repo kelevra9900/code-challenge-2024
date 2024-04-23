@@ -42,7 +42,7 @@ const ContentForm = () => {
 								/>
 							</div>
 							<Controller
-								name="refund_reason"
+								name="type"
 								control={control}
 								render={({field}) => (
 									<>
