@@ -61,11 +61,6 @@ const ContentForm = () => {
 												classNamePrefix="select"
 												isMulti={false}
 											/>
-											{/* {errors.refund_reason && (
-												<p className="mt-2 text-xs text-red-500">
-													{t(errors.refund_reason?.message!)}
-												</p>
-											)} */}
 										</div>
 									</>
 								)}
@@ -106,11 +101,6 @@ const ContentForm = () => {
 												classNamePrefix="select"
 												isMulti={false}
 											/>
-											{/* {errors.refund_reason && (
-												<p className="mt-2 text-xs text-red-500">
-													{t(errors.refund_reason?.message!)}
-												</p>
-											)} */}
 										</div>
 									</>
 								)}
