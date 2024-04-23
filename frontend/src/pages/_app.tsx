@@ -5,6 +5,7 @@ import {SessionProvider} from 'next-auth/react';
 import QueryProvider from "@/data/client/query-provider";
 import {NextPageWithLayout} from '@/types';
 import '@/assets/css/main.css';
+import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from '@/lib/private-route';
 
 import DefaultSeo from "@/components/seo/default-seo";

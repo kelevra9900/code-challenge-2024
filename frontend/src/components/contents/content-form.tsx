@@ -8,6 +8,28 @@ import FileInput from '@/components/ui/forms/file-input';
 import Select from "@/components/ui/select/select";
 import Label from "@/components/ui/forms/label";
 
+const icons = [
+	{
+		value: 'image',
+		label: 'Imagen',
+	},
+	{
+		value: 'video',
+		label: 'Video',
+	},
+	{
+		value: 'audio',
+		label: 'Audio',
+	},
+	{
+		value: 'pdf',
+		label: 'PDF',
+	},
+	{
+		value: 'doc',
+		label: 'Documento',
+	}
+];
 const ContentForm = () => {
 	function onSubmit(data: any) {
 		console.log(data);
@@ -52,7 +74,7 @@ const ContentForm = () => {
 											</Label>
 											<Select
 												{...field}
-												options={[]}
+												options={icons}
 												isDisabled={false}
 												isLoading={false}
 												isSearchable={false}
