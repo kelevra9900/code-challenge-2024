@@ -1,0 +1,9 @@
+{
+  "name": "source",
+  "version": "1.0.0",
+  "author": "Roger Torres <torresroger445@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "20.x"
+  }
+}
