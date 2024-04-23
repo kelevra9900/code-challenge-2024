@@ -25,7 +25,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, Props>(
 
           <label
             htmlFor={name}
-            className={classNames('text-body text-sm', {
+            className={classNames('text-body text-sm ml-2', {
               primary: theme === 'primary',
               secondary: theme === 'secondary',
             })}
