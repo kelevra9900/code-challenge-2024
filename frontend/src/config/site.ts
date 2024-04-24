@@ -6,28 +6,19 @@ export const siteSettings = {
 	logo: {
 		url: '/logo.svg',
 		alt: 'Code Challenge',
-		href: '/grocery',
+		href: '/',
 		width: 128,
 		height: 40,
 	},
-	defaultLanguage: 'en',
-	currencyCode: 'USD',
+	defaultLanguage: 'es',
 	authorizedLinks: [
-		{href: Routes.profile,label: 'Perfil'},
+		{href: Routes.profile,label: 'Cuenta'},
 	],
 	authorizedLinksMobile: [
 		{href: Routes.profile,label: 'Perfil'},
 		{href: Routes.changePassword,label: 'Cambiar contraseña'},
 	],
-	dashboardSidebarMenu: [
-		{
-			href: Routes.profile,
-			label: 'Perfil',
-		},
-		{
-			href: Routes.changePassword,
-			label: 'Cambiar contraseña',
-		},
+	dashboardSidebarAuth: [
 		{
 			href: Routes.categories,
 			label: 'Categorías',
@@ -40,6 +31,16 @@ export const siteSettings = {
 			href: Routes.contents,
 			label: 'Contenido',
 		},
+	],
+	dashboardSidebarMenu: [
+		{
+			href: Routes.profile,
+			label: 'Perfil',
+		},
+		{
+			href: Routes.changePassword,
+			label: 'Cambiar contraseña',
+		},
 		{
 			href: Routes.logout,
 			label: 'Salir',
@@ -48,13 +49,4 @@ export const siteSettings = {
 	headerLinks: [
 		{href: Routes.home,label: 'text-home'},
 	],
-	footer: {
-		menus: [
-			{
-				title: 'text-explore',
-				links: [
-				],
-			},
-		],
-	},
 };
