@@ -1,6 +1,7 @@
 import type {AppProps} from "next/app";
 import dynamic from "next/dynamic";
 import {SessionProvider} from 'next-auth/react';
+import {appWithTranslation} from 'next-i18next';
 
 import QueryProvider from "@/data/client/query-provider";
 import {NextPageWithLayout} from '@/types';
@@ -13,6 +14,9 @@ import {ModalProvider} from "@/components/ui/modal/modal.context";
 import {SearchProvider} from "@/components/ui/search/search.context";
 import ManagedModal from "@/components/ui/modal/managed-modal";
 import ManagedDrawer from "@/components/ui/drawer/managed-drawer";
+import {useRouter} from "next/router";
+import {getDirection} from "@/lib/constants";
+import {useEffect,useState} from "react";
 
 const ToastContainer = dynamic(
   () => import('react-toastify').then((module) => module.ToastContainer),
@@ -26,35 +30,46 @@ type AppPropsWithLayout = AppProps & {
 function CustomApp({
   Component,
   pageProps: {
-    //@ts-ignore
     session,
     ...pageProps
   },
 }: AppPropsWithLayout) {
-  // Use the layout defined at the page level, if available
+  const [domLoaded,setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  },[]);
+
+
   const getLayout = Component.getLayout ?? ((page) => page);
   const authenticationRequired = Component.authenticationRequired ?? false;
+  const {locale} = useRouter();
+  const dir = getDirection(locale);
 
   return (
     <>
-      <div dir="ltr">
+      <div dir={dir}>
         <SessionProvider session={session}>
           <QueryProvider pageProps={pageProps}>
             <SearchProvider>
               <ModalProvider>
-                <>
-                  <DefaultSeo />
-                  {authenticationRequired ? (
-                    <PrivateRoute>
-                      {getLayout(<Component {...pageProps} />)}
-                    </PrivateRoute>
-                  ) : (
-                    getLayout(<Component {...pageProps} />)
-                  )}
-                  <ManagedModal />
-                  <ManagedDrawer />
-                  <ToastContainer autoClose={2000} theme="colored" />
-                </>
+                {
+                  domLoaded && (
+                    <>
+                      <DefaultSeo />
+                      {authenticationRequired ? (
+                        <PrivateRoute>
+                          {getLayout(<Component {...pageProps} />)}
+                        </PrivateRoute>
+                      ) : (
+                        getLayout(<Component {...pageProps} />)
+                      )}
+                      <ManagedModal />
+                      <ManagedDrawer />
+                      <ToastContainer autoClose={2000} theme="colored" />
+                    </>
+                  )
+                }
               </ModalProvider>
             </SearchProvider>
           </QueryProvider>
@@ -64,4 +79,4 @@ function CustomApp({
   );
 }
 
-export default CustomApp;
+export default appWithTranslation(CustomApp);

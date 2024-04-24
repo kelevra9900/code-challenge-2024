@@ -7,7 +7,6 @@ import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse
 import { handleServiceResponse } from '@/common/utils/httpHandlers';
 import { UserRole } from '@/contracts/user';
 
-// import { handleServiceResponse } from '@/common/utils/httpHandlers';
 import { authTokenSchema, AuthUserSchema, UserCreateSchema, UserSchema } from '../user/userModel';
 import { authService } from './authService';
 

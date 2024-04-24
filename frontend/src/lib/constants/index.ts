@@ -15,9 +15,16 @@ export const PRODUCT_INITIAL_FETCH_LIMIT = 30;
 export const DEFAULT_LANGUAGE =
   process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE ?? 'en';
 export const RESPONSIVE_WIDTH = 1024 as number;
+export const RTL_LANGUAGES: ReadonlyArray<string> = ['ar','he'];
 
 export const checkIsScrollingStart = atom(false);
 
 export const isMultiLangEnable =
   process.env.NEXT_PUBLIC_ENABLE_MULTI_LANG === 'true' &&
   !!process.env.NEXT_PUBLIC_AVAILABLE_LANGUAGES;
+
+
+export function getDirection(language: string | undefined) {
+  if (!language) return 'ltr';
+  return RTL_LANGUAGES.includes(language) ? 'rtl' : 'ltr';
+}

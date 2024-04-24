@@ -17,9 +17,12 @@ export const authRepository = {
       }
       const jwt = jwtSign(user._id);
 
+      if (!jwt) {
+        return null;
+      }
+
       user.authentication.sessionToken = jwt.accessToken;
       await user.save();
-
       return user;
     } catch (error) {
       console.error('Error al iniciar sesión:', error);

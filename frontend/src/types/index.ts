@@ -23,6 +23,14 @@ export interface ChangePasswordUserInput {
 	newPassword: string;
 }
 
+export interface CreateThemeInput {
+	name: string;
+	categoryId: string;
+	allowImage: boolean;
+	allowVideos: boolean;
+	allowText: boolean;
+}
+
 export interface CreateCategoryInput {
 	name: string;
 	slug: string;
