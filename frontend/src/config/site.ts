@@ -1,11 +1,11 @@
 import {Routes} from '@/config/routes';
 
 export const siteSettings = {
-	name: 'PickBazar',
+	name: 'Code challenge',
 	description: '',
 	logo: {
 		url: '/logo.svg',
-		alt: 'PickBazar',
+		alt: 'Code Challenge',
 		href: '/grocery',
 		width: 128,
 		height: 40,
