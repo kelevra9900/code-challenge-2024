@@ -33,23 +33,6 @@ export default function Uploader({
     multiple,
     onDrop,
   });
-  console.log('===== file ====')
-  console.log(files);
-  // const thumbs = files.map((file: any, idx: number) => {
-
-  //   return(
-  //     <div
-  //       className="relative inline-flex flex-col mt-2 overflow-hidden border rounded border-border-100 ltr:mr-2 rtl:ml-2"
-  //       key={idx}
-  //     >
-  //       <div className="flex items-center justify-center w-16 h-16 min-w-0 overflow-hidden">
-  //         {/* eslint-disable */}
-  //         <img src={file.path} alt={file?.path} />
-  //       </div>
-  //     </div>
-  //   )
-  // });
-
   const thumbs = files && (
     <div
       className="relative inline-flex flex-col mt-2 overflow-hidden border rounded border-border-100 ltr:mr-2 rtl:ml-2"

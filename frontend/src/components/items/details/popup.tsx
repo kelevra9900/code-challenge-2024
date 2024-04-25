@@ -22,8 +22,6 @@ const Popup: React.FC<ItemPopupProps> = ({itemID}) => {
 	)
 
 	if (error) return <ErrorMessage message={error.message} />;
-
-	console.log('Data received in Popup:', data);
 	return(
 		<AttributesProvider>
 			<article className="relative z-[51] w-full max-w-6xl bg-light md:rounded-xl xl:min-w-[1152px]">

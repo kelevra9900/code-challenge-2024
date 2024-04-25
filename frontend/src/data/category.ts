@@ -38,7 +38,6 @@ export const useCategoryMutation = () => {
 
 	const {mutate, isLoading, error} = useMutation(categoryClient.create, {
 		onSuccess: () => {
-			console.log('==== Category created successfully ====')
 			toast.success('Category created successfully');
 		},
 		onSettled: () => {
