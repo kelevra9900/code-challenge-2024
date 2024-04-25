@@ -1,56 +1,38 @@
-import {useState} from "react";
+import {Controller} from "react-hook-form";
 
-import CheckboxGroup from "../search-view/checkbox-group";
 import Button from "../ui/button";
 import Card from "../ui/cards/card";
-import FileInput from "../ui/forms/file-input";
 import {Form} from "../ui/forms/form";
 import Input from "../ui/forms/input";
-import {useCategoriesQuery} from "@/data/category";
+import {useCategoriesQuery, useCategoryMutation} from "@/data/category";
 import Checkbox from "../ui/forms/checkbox/checkbox";
 import {CreateThemeInput} from "@/types";
+import Label from "../ui/label";
+import Select from "../ui/select/select";
+import {sluggify} from "@/lib/utils/sluggify";
 
-// const options = [
-// 	{
-// 		label: 'Imagen',
-// 		value: 'allowImage',
-// 	},
-// 	{
-// 		label: 'Videos',
-// 		value: 'allowVideos',
-// 	},
-// 	{
-// 		label: 'Texto',
-// 		value: 'allowText',
-// 	},
-// ];
 export default function ThemeForm(){
-	const [ state, setState ] = useState('');
-	const { data, isLoading, error } = useCategoriesQuery({});
+	const {data,isLoading: loadingCategories, error } = useCategoriesQuery({});
+	const {createCategory, isLoading } = useCategoryMutation();
+
 	function handleSubmit(values: any){
-		console.log(values);
+		const body = {
+			...values,
+			categoryId: values.categoryId._id,
+			slug: sluggify(values.name)
+		}
+		createCategory(body);
 	}
-
-	function handleChange(values: any){
-		console.log(values);
-	}
-
 
 
 	return(
 		<Form<CreateThemeInput>
 			onSubmit={handleSubmit}
-			// validationSchema={}
 			className="flex flex-col"
-			// serverError={formError}
 			>
-				{({register,formState, control, formState: { errors }}) => (
+				{({register, control, formState: { errors }}) => (
 				<div className='mb-8 flex'>
 					<Card className="w-full">
-						<div className="mb-8">
-							<FileInput control={control} name="image" />
-						</div>
-
 						<div className="mb-6 flex flex-row">
 							<Input
 								className="flex-1"
@@ -62,49 +44,50 @@ export default function ThemeForm(){
 								errors.name && <p className="text-red-500">{errors.name.message}</p>
 							}
 						</div>
+						<Controller
+							name="categoryId"
+							control={control}
+							render={({field}) => (
+								<>
+									<div className="mb-5">
+										<Label htmlFor="categoryId">
+											Selecciona una categoría
+										</Label>
+										{
+											!loadingCategories && !error && (
+												<Select
+													{...field}
+													options={data}
+													isDisabled={false}
+													isLoading={loadingCategories}
+													isSearchable={false}
+													getOptionLabel={(options: any) => {
+														return options.name;
+													}}
+													placeholder={'Selecciona una categoría'}
+													className="basic-multi-select"
+													classNamePrefix="select"
+													isMulti={false}
+												/>
+											)
+										}
+									</div>
+								</>
+							)}
+						/>
 
-						{/* Column with 3 options */}
-						<div className="grid grid-cols-1 gap-4">
-							<Checkbox
-								key={'allowImage'}
-								name="type"
-								label={'Imagen'}
-								value={state}
-								onChange={handleChange}
-								multiple={false}
-							/>
-							<Checkbox
-								key={'allowVideos'}
-								name="type"
-								label={'Videos'}
-								value={state}
-								onChange={handleChange}
-								multiple={false}
-							/>
-
-							<Checkbox
-								key={'allowText'}
-								name="type"
-								label={'Texto'}
-								value={state}
-								onChange={handleChange}
-								multiple={false}
-							/>
-							<Checkbox
-								key={'allowImage'}
-								name="type"
-								label={'Imagen'}
-								value={state}
-								onChange={handleChange}
-								multiple={false}
-							/>
+						<div>
+							{/* 3 checkbox */}
+							<Checkbox label="Imagen" {...register('allowImage')} />
+							<Checkbox label="Videos" {...register('allowVideos')} />
+							<Checkbox label="Texto" {...register('allowText')} />
 						</div>
 
 						<div className="flex">
 							<Button
 								className="ltr:ml-auto rtl:mr-auto"
-								loading={isLoading}
-								disabled={isLoading}
+								loading={loadingCategories || isLoading}
+								disabled={loadingCategories || isLoading}
 							>
 								Guardar
 							</Button>
