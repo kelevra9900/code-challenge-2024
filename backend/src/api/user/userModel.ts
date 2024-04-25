@@ -26,14 +26,9 @@ export const UserSchema = z.object({
 });
 
 export const authTokenSchema = z.object({
-  authorization: z
-    .string()
-    .refine((value) => value.startsWith('Bearer '), {
-      message: 'Invalid Authorization header',
-    })
-    .openapi({
-      description: "Include a Bearer token in the 'Authorization' header. For example: 'Bearer YOUR_TOKEN_HERE'",
-    }),
+  authorization: z.string().refine((v) => v.startsWith('Bearer '), {
+    message: 'Invalid token',
+  }),
 });
 
 export const AuthUserSchema = z.object({ email: z.string().email(), password: z.string() });

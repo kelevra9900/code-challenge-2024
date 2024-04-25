@@ -1,3 +1,9 @@
+/**
+ * Represents an authentication repository.
+ * Provides methods for signing in and signing up users.
+ *
+ * @class
+ */
 import { authentication, jwtSign, random } from '@/utils/jwt';
 
 import { getUserByEmail, User } from '../user/userModel';

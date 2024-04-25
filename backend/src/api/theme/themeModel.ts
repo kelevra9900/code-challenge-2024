@@ -1,3 +1,18 @@
+/**
+ * This code snippet defines a TypeScript module that exports several functions and types related to a "Theme" entity.
+ *
+ * The module imports various dependencies, including "@asteasolutions/zod-to-openapi", "mongoose", and "zod".
+ * It also imports two utility functions from "@/common/utils/commonValidation" and "@/common/utils/validId".
+ *
+ * The module extends the "zod" library with an OpenAPI function and defines a "Theme" type using a Zod schema.
+ * It also defines a "ThemeCreateUpdateSchema" and a "GetThemeSchema" using the "Theme" schema.
+ *
+ * The module creates a Mongoose schema for the "Theme" entity and exports a Mongoose model based on that schema.
+ *
+ * Additionally, the module exports several functions for CRUD operations on the "Theme" entity, including "createTheme", "getThemeById", "getAllThemes", "updateTheme", and "deleteTheme".
+ *
+ * Note: The code snippet is not a complete TypeScript module and may require additional imports and setup to work properly.
+ */
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import mongoose, { Schema } from 'mongoose';
 import { z } from 'zod';

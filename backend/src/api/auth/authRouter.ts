@@ -1,3 +1,10 @@
+/**
+ * This code snippet defines an authentication router in an Express application.
+ * It handles sign-in, sign-up, and retrieving the authenticated user's information.
+ * The router uses the OpenAPIRegistry to register the API paths and their corresponding schemas and responses.
+ * It also utilizes the ServiceResponse class and handleServiceResponse function for handling service responses.
+ * The authRouter is exported as a Router instance.
+ */
 import { OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
 import express, { Request, Response, Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
