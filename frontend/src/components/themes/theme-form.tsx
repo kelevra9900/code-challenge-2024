@@ -10,20 +10,20 @@ import {useCategoriesQuery} from "@/data/category";
 import Checkbox from "../ui/forms/checkbox/checkbox";
 import {CreateThemeInput} from "@/types";
 
-const options = [
-	{
-		label: 'Imagen',
-		value: 'allowImage',
-	},
-	{
-		label: 'Videos',
-		value: 'allowVideos',
-	},
-	{
-		label: 'Texto',
-		value: 'allowText',
-	},
-];
+// const options = [
+// 	{
+// 		label: 'Imagen',
+// 		value: 'allowImage',
+// 	},
+// 	{
+// 		label: 'Videos',
+// 		value: 'allowVideos',
+// 	},
+// 	{
+// 		label: 'Texto',
+// 		value: 'allowText',
+// 	},
+// ];
 export default function ThemeForm(){
 	const [ state, setState ] = useState('');
 	const { data, isLoading, error } = useCategoriesQuery({});
@@ -65,15 +65,39 @@ export default function ThemeForm(){
 
 						{/* Column with 3 options */}
 						<div className="grid grid-cols-1 gap-4">
-							{
-								options.map((option: any) => (
-									<Checkbox
-										key={option.value}
-										label={option.label}
-										{...register(option.value)}
-									/>
-								))
-							}
+							<Checkbox
+								key={'allowImage'}
+								name="type"
+								label={'Imagen'}
+								value={state}
+								onChange={handleChange}
+								multiple={false}
+							/>
+							<Checkbox
+								key={'allowVideos'}
+								name="type"
+								label={'Videos'}
+								value={state}
+								onChange={handleChange}
+								multiple={false}
+							/>
+
+							<Checkbox
+								key={'allowText'}
+								name="type"
+								label={'Texto'}
+								value={state}
+								onChange={handleChange}
+								multiple={false}
+							/>
+							<Checkbox
+								key={'allowImage'}
+								name="type"
+								label={'Imagen'}
+								value={state}
+								onChange={handleChange}
+								multiple={false}
+							/>
 						</div>
 
 						<div className="flex">

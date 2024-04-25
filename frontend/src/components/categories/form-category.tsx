@@ -53,12 +53,6 @@ export default function CreateFormCategory() {
 			validationSchema={createCategorySchema}>
 			{({register,formState,control}) => (
 				<>
-					<div className="mb-8">
-						<label className="mb-3 block text-sm font-semibold leading-none text-body-dark2">Portada</label>
-						<FileInput control={control} name="imagen" />
-					</div>
-
-
 					<Controller
 						name="icon"
 						control={control}
