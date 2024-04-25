@@ -2,6 +2,7 @@ import cors from 'cors';
 import express, { Express } from 'express';
 import fileUpload from 'express-fileupload';
 import helmet from 'helmet';
+import path from 'path';
 import { pino } from 'pino';
 
 import { authRouter } from '@/api/auth/authRouter';
@@ -45,9 +46,11 @@ app.use('/auth', authRouter);
 app.use('/categories', categoryRouter);
 app.use('/themes', themeRouter);
 app.use('/contents', contentRouter);
-app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use('/uploads', express.static(path.resolve('uploads')));
 app.use('/upload', uploadRouter);
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 // Swagger UI
 app.use(openAPIRouter);
 

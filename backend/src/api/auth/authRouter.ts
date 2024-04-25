@@ -111,16 +111,26 @@ export const authRouter: Router = (() => {
   });
 
   router.get('/me', async (req: Request, res: Response) => {
-    if (!req.headers.authorization || req.headers.authorization?.split(' ').length === 1) {
-      return res
-        .send({
-          message: 'UNAUTHORIZED',
-        })
-        .status(StatusCodes.UNAUTHORIZED);
+    try {
+      if (!req.headers.authorization || req.headers.authorization?.split(' ').length === 1) {
+        return res
+          .send({
+            message: 'UNAUTHORIZED',
+          })
+          .status(StatusCodes.UNAUTHORIZED);
+      }
+      // delete Bearer string from token
+      const token = req.headers.authorization.split(' ')[1];
+      handleServiceResponse(await authService.getAuthUser(token), res);
+    } catch (error) {
+      const serviceResponse = new ServiceResponse(
+        ResponseStatus.Failed,
+        'Invalid token',
+        null,
+        StatusCodes.UNAUTHORIZED
+      );
+      handleServiceResponse(serviceResponse, res);
     }
-    // delete Bearer string from token
-    const token = req.headers.authorization.split(' ')[1];
-    handleServiceResponse(await authService.getAuthUser(token), res);
   });
 
   return router;

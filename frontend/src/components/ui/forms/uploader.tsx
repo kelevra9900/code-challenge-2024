@@ -26,30 +26,39 @@ export default function Uploader({
     },
     [upload]
   );
+  const ngrok = 'uploadPath'
   const { getRootProps, getInputProps } = useDropzone({
     //@ts-ignore
-    accept: 'image/*',
+    accept: 'image/*, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     multiple,
     onDrop,
   });
-  const thumbs = files.map((file: any, idx: number) => (
+  console.log('===== file ====')
+  console.log(files);
+  // const thumbs = files.map((file: any, idx: number) => {
+
+  //   return(
+  //     <div
+  //       className="relative inline-flex flex-col mt-2 overflow-hidden border rounded border-border-100 ltr:mr-2 rtl:ml-2"
+  //       key={idx}
+  //     >
+  //       <div className="flex items-center justify-center w-16 h-16 min-w-0 overflow-hidden">
+  //         {/* eslint-disable */}
+  //         <img src={file.path} alt={file?.path} />
+  //       </div>
+  //     </div>
+  //   )
+  // });
+
+  const thumbs = files && (
     <div
       className="relative inline-flex flex-col mt-2 overflow-hidden border rounded border-border-100 ltr:mr-2 rtl:ml-2"
-      key={idx}
     >
       <div className="flex items-center justify-center w-16 h-16 min-w-0 overflow-hidden">
         {/* eslint-disable */}
-        <img src={file.preview} alt={file?.name} />
+        <img crossOrigin='anonymous' src={files} alt={files} />
       </div>
     </div>
-  ));
-  //FIXME: maybe no need to use this
-  useEffect(
-    () => () => {
-      // Make sure to revoke the data uris to avoid memory leaks
-      files.forEach((file: any) => URL.revokeObjectURL(file.preview));
-    },
-    [files]
   );
 
   return (
@@ -79,7 +88,7 @@ export default function Uploader({
       </div>
 
       <aside className="flex flex-wrap mt-2">
-        {!!thumbs.length && thumbs}
+        {thumbs}
         {isLoading && (
           <div className="flex items-center h-16 mt-2 ltr:ml-2 rtl:mr-2">
             <Spinner

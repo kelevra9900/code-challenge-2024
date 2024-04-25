@@ -25,10 +25,10 @@ const ItemCard: React.FC<ProductCardProps> = ({
     <article className="h-full overflow-hidden rounded border border-border-200 bg-light transition-shadow duration-200 hover:shadow-sm">
       <div 
       onClick={handleItemQuickView}
-      className="relative flex h-48 w-auto items-center justify-center sm:h-64">
+        className="relative flex h-48 w-auto items-center justify-center sm:h-64 rounded-sm">
         <span className="sr-only">item image</span>
         <Image
-          src={item.type === 'VIDEO' ? itemPlaceholder : itemPlaceholder}
+          src={item.url || itemPlaceholder}
           alt="item image"
           fill
           sizes="(max-width: 768px) 100vw"

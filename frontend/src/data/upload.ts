@@ -5,18 +5,13 @@ import {useMutation} from "react-query";
 import {uploadClient} from "./client/upload";
 
 export const useUploads = ({onChange,defaultFiles}: any) => {
-	const [files,setFiles] = useState<FileWithPath[]>(
-		getPreviewImage(defaultFiles)
-	);
+	const [files,setFiles] = useState('');
 
 	const { mutate: upload, isLoading } = useMutation(uploadClient.upload,{
 		onSuccess: (data: any) => {
 			if (onChange) {
-				const dataAfterRemoveTypename = data?.map(
-					({__typename,...rest}: any) => rest
-				);
-				onChange(dataAfterRemoveTypename);
-				setFiles(getPreviewImage(dataAfterRemoveTypename));
+				onChange(data.path);
+				setFiles(data.path);
 			}
 		},
 	});

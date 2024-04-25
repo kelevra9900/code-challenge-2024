@@ -3,7 +3,9 @@ module.exports = {
   images: {
     domains: [
       'images.pexels.com',
-      'www.youtube.com'
+      'www.youtube.com',
+      'localhost',
+      'google.com'
     ]
   },
   ...(process.env.APPLICATION_MODE === 'production' && {

@@ -62,7 +62,7 @@ export function Grid({
       >
         {isLoading && !items?.length
           ? rangeMap(limit, (i: number) => (
-              <ItemLoader key={i} uniqueKey={`product-${i}`} />
+              <ItemLoader key={i} uniqueKey={`item-${i}`} />
             ))
           : items?.map((item: any) => (
               <ItemCard item={item} key={item.id} />

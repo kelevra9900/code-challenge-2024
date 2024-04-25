@@ -5,5 +5,5 @@ export const API_ENDPOINTS = {
 	ME: '/auth/me',
 	LOGIN: '/auth/sign-in',
 	USERS_LOGOUT: '/auth/sign-out',
-	UPLOADS: '/attachments',
+	UPLOADS: '/upload',
 }

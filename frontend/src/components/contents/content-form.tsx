@@ -1,4 +1,4 @@
-import {Controller} from "react-hook-form";
+import {Controller, useForm} from "react-hook-form";
 
 import {Form} from "@/components/ui/forms/form";
 import Card from '@/components/ui/cards/card';
@@ -12,6 +12,7 @@ import {useUser} from "@/data/user";
 import {sluggify} from "@/lib/utils/sluggify";
 import {useThemesQuery} from "@/data/theme";
 import TextArea from "../ui/text-area";
+import FileInput from "../ui/forms/file-input";
 
 export enum ContentType {
 	TEXT = 'TEXT',
@@ -26,6 +27,16 @@ const contentsTypes = [
 
 
 const ContentForm = () => {
+	const { setValue } = useForm();
+
+	const setCustomValue = (id: string,value: any) => {
+		setValue(id,value,{
+			shouldDirty: true,
+			shouldTouch: true,
+			shouldValidate: true
+		})
+	}
+
 	const { data, isLoading: loadingCategories, error } = useCategoriesQuery({});
 	const { data: themes, isLoading: loadingThemes, error: errorThemes } = useThemesQuery({});
 	const { mutate: createContent, isLoading: creating, error: errorCreating } = useCreateContentMutation();
@@ -51,6 +62,10 @@ const ContentForm = () => {
 				<>
 					<div className='mb-8 flex'>
 						<Card className="w-full">
+
+							<div className="mb-8">
+								<FileInput control={control} name="url" />
+							</div>
 
 							<div className="mb-6 flex flex-row">
 								<Input
@@ -148,14 +163,14 @@ const ContentForm = () => {
 								)}
 							/>
 
-							<div className="mb-6 flex flex-row">
+							{/* <div className="mb-6 flex flex-row">
 								<Input
 									className="flex-1"
 									label="URL"
 									{...register('url')}
 									variant='outline'
 								/>
-							</div>
+							</div> */}
 							<div className="mb-6 flex flex-row">
 								<TextArea
 									className="flex-1"

@@ -6,9 +6,9 @@ export const uploadClient = {
 	upload: (input: File[]) => {
 		let formData = new FormData();
 		input.forEach((attachment) => {
-			formData.append('attachment[]',attachment);
+			formData.append('file',attachment);
 		});
-		return HttpClient.post<Attachment[]>(API_ENDPOINTS.UPLOADS,formData,{
+		return HttpClient.post<any>(API_ENDPOINTS.UPLOADS,formData,{
 			headers: {
 				'Content-Type': 'multipart/form-data',
 			},

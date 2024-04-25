@@ -1,14 +1,14 @@
 import {Controller} from "react-hook-form";
 
-import Button from "../ui/button";
-import Card from "../ui/cards/card";
-import {Form} from "../ui/forms/form";
-import Input from "../ui/forms/input";
+import Button from "@/components/ui/button";
+import Card from "@/components/ui/cards/card";
+import {Form} from "@/components/ui/forms/form";
+import Input from "@/components/ui/forms/input";
 import {useCategoriesQuery, useCategoryMutation} from "@/data/category";
-import Checkbox from "../ui/forms/checkbox/checkbox";
+import Checkbox from "@/components/ui/forms/checkbox/checkbox";
 import {CreateThemeInput} from "@/types";
-import Label from "../ui/label";
-import Select from "../ui/select/select";
+import Label from "@/components/ui/label";
+import Select from "@/components/ui/select/select";
 import {sluggify} from "@/lib/utils/sluggify";
 
 export default function ThemeForm(){

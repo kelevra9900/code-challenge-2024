@@ -8,11 +8,13 @@ export const uploadService = {
       }
       const file = req.files.file as any;
       const fileName = file.name;
-      const uploadPath = `${__dirname}/uploads/${fileName}`;
+      const uploadPath = `${__dirname}/../../../uploads/${fileName}`;
+      // doc file upload path for access in browser
+      const path = `${req.protocol}://${req.get('host')}/uploads/${fileName}`;
 
       file.mv(uploadPath);
 
-      return { message: 'File uploaded' };
+      return { message: 'File uploaded', path };
     } catch (error) {
       return { message: 'Error uploading file' };
     }
